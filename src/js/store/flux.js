@@ -133,13 +133,15 @@ const getState = ({ getStore, getActions, setStore }) => {
                     'Content-Type': 'application/json',
                 }
             }) => {
+                console.log("Pasé por el getVehicle");
                 try {
                     const response = await fetch(url, options);
                     if (response.status !== 200) throw new Error("Error fetching Vehicle");
                     const data = await response.json();
-                    setStore({
-                        vehicle: data
-                    })
+                    setStore({vehicle: data})
+                    console.log("Debería tener algo");
+                    console.log("Data",data);
+                    console.log(vehicle);
                 } catch (error) {
                     setStore({
                         error: error.message

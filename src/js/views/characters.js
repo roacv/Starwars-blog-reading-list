@@ -8,7 +8,10 @@ import { Context } from '../store/appContext';
 export const Characters = () => {
 	const { store, actions } = useContext(Context);
 	//https://starwars-visualguide.com/assets/img/characters/1.jpg
-	//console.log(store.characters);
+	if (store.characters !== null){
+		// console.log("Characters",store.characters);
+		// console.log("result",store.characters.results);
+	}
 	return (
 	<div className="text-start mt-5">
 		<img src={titlePage} alt="Logo" width="400" height="30" className="d-inline-block align-text-top"/>
@@ -17,7 +20,11 @@ export const Characters = () => {
 				{store.characters !== null ?
 					(store.characters.results.map((result, index) =>    {
 						return (
-							<Card key={index} name={result.name} id={index} img={"https://starwars-visualguide.com/assets/img/characters/"+(index+1)+".jpg"}/>
+							<Card key={index} 
+							name={result.name} 
+							id={result.uid} 
+							img={"https://starwars-visualguide.com/assets/img/characters/"+(result.uid)+".jpg"}
+							destino="character"/>
 						);
 					}
 					)): null}

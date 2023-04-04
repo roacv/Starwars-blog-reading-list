@@ -17,7 +17,11 @@ export const Planets = () => {
 				{store.planets !== null ?
 					(store.planets.results.map((result, index) =>    {
 						return (
-							<Card key={index} name={result.name} id={index} img={"https://starwars-visualguide.com/assets/img/planets/"+(index+1)+".jpg"}/>
+							<Card key={index} 
+							name={result.name} 
+							id={result.uid} 
+							img={"https://starwars-visualguide.com/assets/img/planets/"+(result.uid)+".jpg"}
+							destino="planet"/>							
 						);
 					}
 					)): null}

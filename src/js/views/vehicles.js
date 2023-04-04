@@ -17,7 +17,11 @@ export const Vehicles = () => {
 				{store.vehicles !== null ?
 					(store.vehicles.results.map((result, index) =>    {
 						return (
-							<Card key={index} name={result.name} id={index} img={"https://starwars-visualguide.com/assets/img/vehicles/"+(index+4)+".jpg"}/>
+							<Card key={index} 
+							name={result.name} 
+							id={result.uid} 
+							img={"https://starwars-visualguide.com/assets/img/vehicles/"+(result.uid)+".jpg"}
+							destino="vehicle"/>	
 						);
 					}
 					)): null}
