@@ -2,16 +2,11 @@ import React from "react";
 import "../../styles/home.css";
 import titlePage from "../../img/characters.png"
 import { Card } from "../component/card";
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 import { Context } from '../store/appContext';
 
 export const Characters = () => {
 	const { store, actions } = useContext(Context);
-	//https://starwars-visualguide.com/assets/img/characters/1.jpg
-	if (store.characters !== null){
-		// console.log("Characters",store.characters);
-		// console.log("result",store.characters.results);
-	}
 	return (
 	<div className="text-start mt-5">
 		<img src={titlePage} alt="Logo" width="400" height="30" className="d-inline-block align-text-top"/>

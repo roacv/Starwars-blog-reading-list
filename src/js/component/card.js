@@ -1,10 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { BsBookmark } from "react-icons/bs";
+import { BsBookmark, BsFillBookmarkFill } from "react-icons/bs";
+import { useContext } from 'react';
+import { Context } from '../store/appContext';
 
 export const Card = (props) => {
-	//console.log(props.result.url);
-	
+	const { store, actions } = useContext(Context);
+    const { favorites } = store;
 	return (
 	<div className="card mt-3 ms-1 me-1">
 		<div className="cardimg border mx-auto">
@@ -15,7 +17,16 @@ export const Card = (props) => {
 			<p className="card-text"></p>
 			<div className="d-flex justify-content-between">
 				<Link to={"/"+props.destino+"/"+props.id} className="btn btn-primary">Learn more</Link>
-				<div className="btn btn-warning"><BsBookmark/></div>
+				{(favorites.indexOf(props.name) === -1) ?
+				(
+					<div className="btn btn-outline-warning" onClick={() => {actions.addFavorite(props.name)}}>
+						<BsBookmark/>
+					</div>
+				) : (
+					<div className="btn btn-warning" onClick={() => {actions.removeFavorite(props.name)}}>
+						<BsFillBookmarkFill/>
+					</div>
+				)}
 			</div>
 		</div>
 	</div>

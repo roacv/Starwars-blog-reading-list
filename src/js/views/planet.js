@@ -1,7 +1,5 @@
 import React from "react";
 import "../../styles/home.css";
-import titlePage from "../../img/characters.png"
-import { Card } from "../component/card";
 import { useContext, useState, useEffect } from 'react';
 import { Context } from '../store/appContext';
 import { useParams } from "react-router";
@@ -9,31 +7,22 @@ import { useParams } from "react-router";
 export const Planet = () => {
 	const { store, actions } = useContext(Context);
 	let param = useParams();
-	//https://starwars-visualguide.com/assets/img/characters/1.jpg
-	console.log(param);
 	useEffect(() => {
         actions.getPlanet(`https://www.swapi.tech/api/planets/${param.id}`);
     },[])
-	console.log(store.planet);
-	if (store.planet !== null){
-		console.log(store.planet);
-		if (store.planet.message !== null){
-			console.log(store.planet.message);}
-		// console.log("properties",store.planet.data.result.properties);
-	}
 	return (
 		<>
 		{store.planet !== null ? (
-		<div className="card mb-3" style={{width: "1500px"}}>
+		<div className="card mb-3 mx-auto" style={{width: "1000px"}}>
 			<div className="row g-0">
 				<div className="col-md-4 my-auto">
 				<img src={"https://starwars-visualguide.com/assets/img/planets/"+(param.id)+".jpg"} className="img-fluid rounded-start" alt="..."/>
 				</div>
 				<div className="col-md-8">
-				<div className="card-body">
+				<div className="card-body mx-5">
 					<h5 className="card-title">{store.planet.result.properties.name}</h5>
 					<p className="card-text">{store.planet.result.description}</p>
-					<table className="table table-dark table-striped w-50">
+					<table className="table table-dark table-striped w-75">
 						<tbody>
 							<tr>
 								<th scope="row">Climate</th>
